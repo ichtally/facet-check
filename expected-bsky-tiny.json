@@ -1,0 +1,177 @@
+{
+ "plain text, nothing here": [],
+ "see https://example.com/a?b=1.": [
+  {
+   "index": {
+    "byteStart": 4,
+    "byteEnd": 29
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#link",
+     "uri": "https://example.com/a?b=1"
+    }
+   ]
+  }
+ ],
+ "🙂 https://github.com/ichtally/bsky-tiny #atproto": [
+  {
+   "index": {
+    "byteStart": 5,
+    "byteEnd": 42
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#link",
+     "uri": "https://github.com/ichtally/bsky-tiny"
+    }
+   ]
+  },
+  {
+   "index": {
+    "byteStart": 43,
+    "byteEnd": 51
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#tag",
+     "tag": "atproto"
+    }
+   ]
+  }
+ ],
+ "café #crème_brûlée and #123 and #ok!": [
+  {
+   "index": {
+    "byteStart": 6,
+    "byteEnd": 22
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#tag",
+     "tag": "crème_brûlée"
+    }
+   ]
+  },
+  {
+   "index": {
+    "byteStart": 36,
+    "byteEnd": 39
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#tag",
+     "tag": "ok"
+    }
+   ]
+  }
+ ],
+ "https://x.com/#frag is not a tag": [
+  {
+   "index": {
+    "byteStart": 0,
+    "byteEnd": 19
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#link",
+     "uri": "https://x.com/#frag"
+    }
+   ]
+  }
+ ],
+ "two links https://a.com https://b.org/x": [
+  {
+   "index": {
+    "byteStart": 10,
+    "byteEnd": 23
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#link",
+     "uri": "https://a.com"
+    }
+   ]
+  },
+  {
+   "index": {
+    "byteStart": 24,
+    "byteEnd": 39
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#link",
+     "uri": "https://b.org/x"
+    }
+   ]
+  }
+ ],
+ "日本語のテキスト #日本 https://example.jp/パス": [
+  {
+   "index": {
+    "byteStart": 25,
+    "byteEnd": 32
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#tag",
+     "tag": "日本"
+    }
+   ]
+  },
+  {
+   "index": {
+    "byteStart": 33,
+    "byteEnd": 52
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#link",
+     "uri": "https://example.jp/"
+    }
+   ]
+  }
+ ],
+ "#atproto": [
+  {
+   "index": {
+    "byteStart": 0,
+    "byteEnd": 8
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#tag",
+     "tag": "atproto"
+    }
+   ]
+  }
+ ],
+ "family 👨‍👩‍👧 then #tag": [
+  {
+   "index": {
+    "byteStart": 31,
+    "byteEnd": 35
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#tag",
+     "tag": "tag"
+    }
+   ]
+  }
+ ],
+ "(https://example.com/path)": [
+  {
+   "index": {
+    "byteStart": 1,
+    "byteEnd": 25
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#link",
+     "uri": "https://example.com/path"
+    }
+   ]
+  }
+ ]
+}
