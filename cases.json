@@ -8,5 +8,20 @@
  "日本語のテキスト #日本 https://example.jp/パス",
  "#atproto",
  "family 👨‍👩‍👧 then #tag",
- "(https://example.com/path)"
+ "(https://example.com/path)",
+ "bare domain example.com and github.com/ichtally/facet-check.",
+ "files like readme.md and bsky.py and notes.txt",
+ "Example.COM vs example.com vs e.g. this",
+ "HTTPS://shouty.example.com and Https://x.org",
+ "link in parens (see wikipedia.org/wiki/Foo_(bar)) ok",
+ "hi @alice.bsky.social and @bob.test, not @nope or @x.notatld",
+ "(@paren.bsky.social) and email me@example.com",
+ "fullwidth ＃タグ and #tag… and #a.b. and #!!!",
+ "#️⃣ keycap and #1st and #2024 and #v2",
+ "$AAPL up, $TSLA. ($GOOG) $toolong and $1abc and US$5",
+ "multi\nline\nexample.org\n#tag",
+ "tab\thttps://t.co/x\t#t",
+ "https://example.com/path?q=a,b;c! trailing",
+ "ftp://not.a.link but www.example.com is",
+ "🙂🙂 x.com/🙂 and #🙂"
 ]

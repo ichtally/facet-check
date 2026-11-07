@@ -81,9 +81,11 @@ The fix: encode the text to UTF-8 first (<code>new TextEncoder().encode(text)</c
 
 <h2>Limits, honestly</h2>
 <ul>
-  <li>Detects <code>http(s)://</code> links, <code>@handle.domain</code> mentions and <code>#tags</code>. The official app also links bare domains like <code>example.com</code>; this doesn't.</li>
-  <li>Tag rules are simplified: trailing punctuation stripped, no all-digit tags, max 64 characters.</li>
-  <li>Same rules as <a href="https://github.com/ichtally/bsky-tiny">bsky-tiny</a>, a one-file Python client; both are tested against each other.</li>
+  <li>Build mode uses the same detection rules as the official <code>@atproto/api</code> library (v0.30.3): links, bare domains, @mentions, #tags and $cashtags.
+    It was checked against that library on 18,000+ random texts with zero differences. That includes the quirks: <code>readme.md</code> becomes a link (<code>.md</code> is a real TLD), <code>notes.txt</code> doesn't, and neither does <code>Example.COM</code>.</li>
+  <li>Mentions only become facets once they're resolved to a DID (press <em>Resolve @mentions</em>).</li>
+  <li>The "likely cause" hint only spots the two classic mistakes (character offsets, UTF-16 offsets).</li>
+  <li><a href="https://github.com/ichtally/bsky-tiny">bsky-tiny</a>, a one-file Python client, uses the same rules; both are tested against each other.</li>
 </ul>
 
 <footer>

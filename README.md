@@ -2,7 +2,7 @@
 
 **Live: https://ichtally.github.io/facet-check/**
 
-A one-page tool for Bluesky rich-text facets (links, @mentions, #tags):
+A one-page tool for Bluesky rich-text facets (links, @mentions, #tags, $cashtags):
 
 - **Build**: type a post, get the `facets` array with correct UTF-8 `byteStart`/`byteEnd`, plus a table showing the
   same spans in bytes vs characters vs JavaScript string indices, so you can see where your own code would drift.
@@ -21,13 +21,25 @@ shifts it by 2–3 positions depending on what you counted. It's the most common
 
 - `facets.js`: the logic (no dependencies; works in the browser and in Node).
 - `index.html`: the page.
-- `test.js`: `node test.js`. Also checks the output against [bsky-tiny](https://github.com/ichtally/bsky-tiny)'s
-  Python implementation (`cases.json` → `expected-bsky-tiny.json`), so both stay in agreement.
+- `test.js`: `node test.js`. Checks the output against the official `@atproto/api` library
+  (`cases.json` → `expected-atproto.json`, made with `RichText.detectFacetsWithoutResolution()`) and against
+  [bsky-tiny](https://github.com/ichtally/bsky-tiny)'s Python port (`expected-bsky-tiny.json`).
+
+## Same rules as the official app
+
+`facets.js` is a port of the detector in `@atproto/api` v0.30.3, with its regexes copied as they are. Besides
+the 25 checked-in cases, both this and bsky-tiny's Python port were run against the real library on 18,354
+randomly generated texts (emoji, ZWJ sequences, fullwidth `＃`, odd whitespace, URLs, cashtags). There were
+zero differences. The quirks are kept on purpose, because they're what your post will actually get:
+
+- Bare domains link only if the last part is a real TLD: `readme.md` and `bsky.py` link, `notes.txt` doesn't.
+- That check is case-sensitive, so `Example.COM` and `HTTPS://example.com` don't link.
+- `$AAPL` (1–5 chars, starting with a letter) becomes a tag facet with the tag `$AAPL`.
 
 ## Limits, honestly
 
-- Detects `http(s)://` links, `@handle.domain` mentions and `#tags`. Bare domains (`example.com`) aren't linked, unlike the official app.
-- Tag rules are simplified: trailing punctuation stripped, no all-digit tags, max 64 characters.
+- Mentions only become facets once resolved to a DID (the page asks `public.api.bsky.app`).
+- If Bluesky changes its detector, this will lag behind until updated. Open an issue if you see a difference.
 - The "likely cause" hint only spots the two classic mistakes (character offsets, UTF-16 offsets).
 
 ## Who made this

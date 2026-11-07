@@ -122,12 +122,12 @@
   {
    "index": {
     "byteStart": 33,
-    "byteEnd": 52
+    "byteEnd": 58
    },
    "features": [
     {
      "$type": "app.bsky.richtext.facet#link",
-     "uri": "https://example.jp/"
+     "uri": "https://example.jp/パス"
     }
    ]
   }
@@ -170,6 +170,297 @@
     {
      "$type": "app.bsky.richtext.facet#link",
      "uri": "https://example.com/path"
+    }
+   ]
+  }
+ ],
+ "bare domain example.com and github.com/ichtally/facet-check.": [
+  {
+   "index": {
+    "byteStart": 12,
+    "byteEnd": 23
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#link",
+     "uri": "https://example.com"
+    }
+   ]
+  },
+  {
+   "index": {
+    "byteStart": 28,
+    "byteEnd": 59
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#link",
+     "uri": "https://github.com/ichtally/facet-check"
+    }
+   ]
+  }
+ ],
+ "files like readme.md and bsky.py and notes.txt": [
+  {
+   "index": {
+    "byteStart": 11,
+    "byteEnd": 20
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#link",
+     "uri": "https://readme.md"
+    }
+   ]
+  },
+  {
+   "index": {
+    "byteStart": 25,
+    "byteEnd": 32
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#link",
+     "uri": "https://bsky.py"
+    }
+   ]
+  }
+ ],
+ "Example.COM vs example.com vs e.g. this": [
+  {
+   "index": {
+    "byteStart": 15,
+    "byteEnd": 26
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#link",
+     "uri": "https://example.com"
+    }
+   ]
+  }
+ ],
+ "HTTPS://shouty.example.com and Https://x.org": [],
+ "link in parens (see wikipedia.org/wiki/Foo_(bar)) ok": [
+  {
+   "index": {
+    "byteStart": 20,
+    "byteEnd": 49
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#link",
+     "uri": "https://wikipedia.org/wiki/Foo_(bar))"
+    }
+   ]
+  }
+ ],
+ "hi @alice.bsky.social and @bob.test, not @nope or @x.notatld": [],
+ "(@paren.bsky.social) and email me@example.com": [],
+ "fullwidth ＃タグ and #tag… and #a.b. and #!!!": [
+  {
+   "index": {
+    "byteStart": 10,
+    "byteEnd": 19
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#tag",
+     "tag": "タグ"
+    }
+   ]
+  },
+  {
+   "index": {
+    "byteStart": 24,
+    "byteEnd": 28
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#tag",
+     "tag": "tag"
+    }
+   ]
+  },
+  {
+   "index": {
+    "byteStart": 36,
+    "byteEnd": 40
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#tag",
+     "tag": "a.b"
+    }
+   ]
+  }
+ ],
+ "#️⃣ keycap and #1st and #2024 and #v2": [
+  {
+   "index": {
+    "byteStart": 19,
+    "byteEnd": 23
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#tag",
+     "tag": "1st"
+    }
+   ]
+  },
+  {
+   "index": {
+    "byteStart": 38,
+    "byteEnd": 41
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#tag",
+     "tag": "v2"
+    }
+   ]
+  }
+ ],
+ "$AAPL up, $TSLA. ($GOOG) $toolong and $1abc and US$5": [
+  {
+   "index": {
+    "byteStart": 0,
+    "byteEnd": 5
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#tag",
+     "tag": "$AAPL"
+    }
+   ]
+  },
+  {
+   "index": {
+    "byteStart": 10,
+    "byteEnd": 15
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#tag",
+     "tag": "$TSLA"
+    }
+   ]
+  },
+  {
+   "index": {
+    "byteStart": 18,
+    "byteEnd": 23
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#tag",
+     "tag": "$GOOG"
+    }
+   ]
+  }
+ ],
+ "multi\nline\nexample.org\n#tag": [
+  {
+   "index": {
+    "byteStart": 11,
+    "byteEnd": 22
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#link",
+     "uri": "https://example.org"
+    }
+   ]
+  },
+  {
+   "index": {
+    "byteStart": 23,
+    "byteEnd": 27
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#tag",
+     "tag": "tag"
+    }
+   ]
+  }
+ ],
+ "tab\thttps://t.co/x\t#t": [
+  {
+   "index": {
+    "byteStart": 4,
+    "byteEnd": 18
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#link",
+     "uri": "https://t.co/x"
+    }
+   ]
+  },
+  {
+   "index": {
+    "byteStart": 19,
+    "byteEnd": 21
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#tag",
+     "tag": "t"
+    }
+   ]
+  }
+ ],
+ "https://example.com/path?q=a,b;c! trailing": [
+  {
+   "index": {
+    "byteStart": 0,
+    "byteEnd": 32
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#link",
+     "uri": "https://example.com/path?q=a,b;c"
+    }
+   ]
+  }
+ ],
+ "ftp://not.a.link but www.example.com is": [
+  {
+   "index": {
+    "byteStart": 21,
+    "byteEnd": 36
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#link",
+     "uri": "https://www.example.com"
+    }
+   ]
+  }
+ ],
+ "🙂🙂 x.com/🙂 and #🙂": [
+  {
+   "index": {
+    "byteStart": 9,
+    "byteEnd": 19
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#link",
+     "uri": "https://x.com/🙂"
+    }
+   ]
+  },
+  {
+   "index": {
+    "byteStart": 24,
+    "byteEnd": 29
+   },
+   "features": [
+    {
+     "$type": "app.bsky.richtext.facet#tag",
+     "tag": "🙂"
     }
    ]
   }

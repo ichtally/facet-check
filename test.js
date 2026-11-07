@@ -72,6 +72,30 @@ t("parsePostRef", () => {
   assert.strictEqual(F.parsePostRef("nope"), null);
 });
 
+t("bare domains, TLD check and its case-sensitivity", () => {
+  const links = (s) => F.buildFacets(s).filter((f) => f.features[0].uri).map((f) => f.features[0].uri);
+  assert.deepStrictEqual(links("go to example.com."), ["https://example.com"]);
+  assert.deepStrictEqual(links("notes.txt readme.md"), ["https://readme.md"]);
+  assert.deepStrictEqual(links("Example.COM HTTPS://a.com"), []);
+});
+
+t("cashtags become uppercase tag facets", () => {
+  const f = F.buildFacets("buy $aapl. not $toolong");
+  assert.deepStrictEqual(f, [{ index: { byteStart: 4, byteEnd: 9 }, features: [{ $type: "app.bsky.richtext.facet#tag", tag: "$AAPL" }] }]);
+  assert.deepStrictEqual(F.inspect("buy $aapl.", f)[0].problems, []);
+});
+
+// expected-atproto.json = output of the official @atproto/api RichText.detectFacetsWithoutResolution()
+// on cases.json (mentions there carry the handle in `did`; here we pass handle->handle to match).
+const official = JSON.parse(fs.readFileSync(__dirname + "/expected-atproto.json", "utf8"));
+t("matches official @atproto/api on all cases", () => {
+  for (const c of Object.keys(official)) {
+    const dids = {};
+    for (const f of official[c]) if (f.features[0].did) dids[f.features[0].did.toLowerCase()] = f.features[0].did;
+    assert.deepStrictEqual(F.buildFacets(c, dids), official[c], JSON.stringify(c));
+  }
+});
+
 if (fs.existsSync(__dirname + "/expected-bsky-tiny.json")) {
   const exp = JSON.parse(fs.readFileSync(__dirname + "/expected-bsky-tiny.json", "utf8"));
   t("matches bsky-tiny (Python) on all cases", () => {
