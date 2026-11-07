@@ -1,0 +1,12 @@
+[
+ "plain text, nothing here",
+ "see https://example.com/a?b=1.",
+ "🙂 https://github.com/ichtally/bsky-tiny #atproto",
+ "café #crème_brûlée and #123 and #ok!",
+ "https://x.com/#frag is not a tag",
+ "two links https://a.com https://b.org/x",
+ "日本語のテキスト #日本 https://example.jp/パス",
+ "#atproto",
+ "family 👨‍👩‍👧 then #tag",
+ "(https://example.com/path)"
+]
