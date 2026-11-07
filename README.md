@@ -17,10 +17,14 @@ and only when you press *Resolve @mentions* or *Fetch*.
 Facet offsets are UTF-8 bytes. `🙂` is 4 bytes, 2 JS string units and 1 Python character, so one emoji before a link
 shifts it by 2–3 positions depending on what you counted. It's the most common bug in hand-rolled Bluesky clients.
 
+Longer explanation with Python/JS snippets and the auto-detection quirks:
+[Why is my Bluesky link on the wrong text?](https://ichtally.github.io/facet-check/guide.html)
+
 ## Files
 
 - `facets.js`: the logic (no dependencies; works in the browser and in Node).
 - `index.html`: the page.
+- `guide.html`: the explainer (every example on it matches the official library's output).
 - `test.js`: `node test.js`. Checks the output against the official `@atproto/api` library
   (`cases.json` → `expected-atproto.json`, made with `RichText.detectFacetsWithoutResolution()`) and against
   [bsky-tiny](https://github.com/ichtally/bsky-tiny)'s Python port (`expected-bsky-tiny.json`).

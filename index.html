@@ -78,6 +78,8 @@ the link lands on the wrong text, or the post is rejected.</p>
 <p>JavaScript makes it worse: <code>"🙂".length</code> is 2 (UTF-16 code units), Python's <code>len("🙂")</code> is 1, and neither is 4.
 The fix: encode the text to UTF-8 first (<code>new TextEncoder().encode(text)</code>, <code>text.encode("utf-8")</code>), then measure.</p>
 <p>The 300-character post limit is different again: it counts graphemes (what a person sees as one character), which this page shows above the preview.</p>
+<p>Longer version, with Python and JavaScript snippets and why <code>readme.md</code> turns into a link:
+<a href="guide.html">Why is my Bluesky link on the wrong text?</a></p>
 
 <h2>Limits, honestly</h2>
 <ul>
